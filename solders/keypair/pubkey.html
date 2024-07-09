@@ -1,0 +1,807 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>从密钥对获取公钥 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="from_bytes.html" />
+    
+    
+    <link rel="prev" href="keypair.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../install.html">
+            
+                <a href="../../install.html">
+            
+                    
+                    安装与概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../airdrop.html">
+            
+                <a href="../../airdrop.html">
+            
+                    
+                    前置准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../solana/solana.html">
+            
+                <a href="../../solana/solana.html">
+            
+                    
+                    solana库
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../solana/client.html">
+            
+                <a href="../../solana/client.html">
+            
+                    
+                    客户端 Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../solana/is_connected.html">
+            
+                <a href="../../solana/is_connected.html">
+            
+                    
+                    是否连接 is_connected
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../solana/get_balance.html">
+            
+                <a href="../../solana/get_balance.html">
+            
+                    
+                    获取余额 get_balance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../solana/get_account_info.html">
+            
+                <a href="../../solana/get_account_info.html">
+            
+                    
+                    获取账户信息 get_account_info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../../solana/get_block_commitment.html">
+            
+                <a href="../../solana/get_block_commitment.html">
+            
+                    
+                    获取区块提交高度 get_block_commitment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../../solana/get_block_time.html">
+            
+                <a href="../../solana/get_block_time.html">
+            
+                    
+                    获取区块时间 get_block_time
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../../solana/get_block.html">
+            
+                <a href="../../solana/get_block.html">
+            
+                    
+                    获取区块 get_block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../../solana/get_recent_performance_samples.html">
+            
+                <a href="../../solana/get_recent_performance_samples.html">
+            
+                    
+                    获取最近性能样本 get_recent_performance_samples
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../../solana/get_block_height.html">
+            
+                <a href="../../solana/get_block_height.html">
+            
+                    
+                    获取区块高度 get_block_height
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../../solana/get_blocks.html">
+            
+                <a href="../../solana/get_blocks.html">
+            
+                    
+                    获取区块 get_blocks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../../solana/get_epoch_info.html">
+            
+                <a href="../../solana/get_epoch_info.html">
+            
+                    
+                    获取纪元信息 get_epoch_info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../../solana/get_epoch_schedule.html">
+            
+                <a href="../../solana/get_epoch_schedule.html">
+            
+                    
+                    获取纪元计划 get_epoch_schedule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../../solana/get_genesis_hash.html">
+            
+                <a href="../../solana/get_genesis_hash.html">
+            
+                    
+                    获取创世哈希 get_genesis_hash
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="../../solana/get_identity.html">
+            
+                <a href="../../solana/get_identity.html">
+            
+                    
+                    获取节点公钥 get_identity
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="../../solana/get_minimum_balance_for_rent_exemption.html">
+            
+                <a href="../../solana/get_minimum_balance_for_rent_exemption.html">
+            
+                    
+                    获取租金豁免的最低余额 get_minimum_balance_for_rent_exemption
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="../../solana/get_multiple_accounts.html">
+            
+                <a href="../../solana/get_multiple_accounts.html">
+            
+                    
+                    获取多个账户 get_multiple_accounts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="../../solana/get_program_accounts.html">
+            
+                <a href="../../solana/get_program_accounts.html">
+            
+                    
+                    获取程序账户 get_program_accounts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="../../solana/get_latest_blockhash.html">
+            
+                <a href="../../solana/get_latest_blockhash.html">
+            
+                    
+                    获取最新区块哈希 get_latest_blockhash
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="../../solana/get_slot_leader.html">
+            
+                <a href="../../solana/get_slot_leader.html">
+            
+                    
+                    获取slot打包交易节点 get_slot_leader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.20" data-path="../../solana/get_stake_activation.html">
+            
+                <a href="../../solana/get_stake_activation.html">
+            
+                    
+                    获取stake激活信息 get_stake_activation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.21" data-path="../../solana/get_vote_accounts.html">
+            
+                <a href="../../solana/get_vote_accounts.html">
+            
+                    
+                    获取投票账户 get_vote_accounts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../solders_package.html">
+            
+                <a href="../solders_package.html">
+            
+                    
+                    solders库
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../pubkey/pubkey.html">
+            
+                <a href="../pubkey/pubkey.html">
+            
+                    
+                    Pubkey
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../pubkey/from_string.html">
+            
+                <a href="../pubkey/from_string.html">
+            
+                    
+                    从字符串创建 Pubkey 对象 from_string
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../pubkey/from_bytes.html">
+            
+                <a href="../pubkey/from_bytes.html">
+            
+                    
+                    从字节串创建 Pubkey 对象 from_bytes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../pubkey/is_on_curve.html">
+            
+                <a href="../pubkey/is_on_curve.html">
+            
+                    
+                    判断公钥是否在椭圆曲线上 is_on_curve
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../pubkey/find_program_address.html">
+            
+                <a href="../pubkey/find_program_address.html">
+            
+                    
+                    根据程序的地址和种子生成派生地址 find_program_address
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.5" data-path="../pubkey/create_with_seed.html">
+            
+                <a href="../pubkey/create_with_seed.html">
+            
+                    
+                    根据种子和程序地址生成公钥 create_with_seed
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="keypair.html">
+            
+                <a href="keypair.html">
+            
+                    
+                    Keypair
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.2.1" data-path="pubkey.html">
+            
+                <a href="pubkey.html">
+            
+                    
+                    从密钥对获取公钥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="from_bytes.html">
+            
+                <a href="from_bytes.html">
+            
+                    
+                    从字节串生成密钥对 from_bytes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="from_seed.html">
+            
+                <a href="from_seed.html">
+            
+                    
+                    从种子生成密钥对 from_seed
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="from_seed_and_derivation_path.html">
+            
+                <a href="from_seed_and_derivation_path.html">
+            
+                    
+                    通过种子和派生路径生成密钥对 from_seed_and_derivation_path
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="from_seed_phrase_and_passphrase.html">
+            
+                <a href="from_seed_phrase_and_passphrase.html">
+            
+                    
+                    通过助记词和密码生成密钥对 from_seed_phrase_and_passphrase
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="secret.html">
+            
+                <a href="secret.html">
+            
+                    
+                    获取私钥 secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="sign_message.html">
+            
+                <a href="sign_message.html">
+            
+                    
+                    对消息进行签名 sign_message
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8" data-path="to_bytes_array.html">
+            
+                <a href="to_bytes_array.html">
+            
+                    
+                    将密钥对转换为字节串 to_bytes_array
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../transactions.html">
+            
+                <a href="../transactions.html">
+            
+                    
+                    用例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >从密钥对获取公钥</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="solderskeypairkeypairpubkey">solders.keypair.Keypair.pubkey</h3>
+<p>&#x4ECE;&#x5BC6;&#x94A5;&#x5BF9;&#x4E2D;&#x83B7;&#x53D6;&#x516C;&#x94A5;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> solders.keypair <span class="hljs-keyword">import</span> Keypair
+
+mnemonic = <span class="hljs-string">&quot;lawsuit dirt click opinion silent element autumn shed junk such heart lake&quot;</span>
+sender_keypair = Keypair.from_seed_phrase_and_passphrase(mnemonic, <span class="hljs-string">&quot;&quot;</span>)
+pubkey = sender_keypair.pubkey()
+print(pubkey)  <span class="hljs-comment"># Fm1BJFQt9VEbxicRxaAcKjMVGiHAqxvq1m2UQ6eztCjb</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="keypair.html" class="navigation navigation-prev " aria-label="Previous page: Keypair">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="from_bytes.html" class="navigation navigation-next " aria-label="Next page: 从字节串生成密钥对 from_bytes">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"从密钥对获取公钥","level":"1.5.2.1","depth":3,"next":{"title":"从字节串生成密钥对 from_bytes","level":"1.5.2.2","depth":3,"path":"solders/keypair/from_bytes.md","ref":"solders/keypair/from_bytes.md","articles":[]},"previous":{"title":"Keypair","level":"1.5.2","depth":2,"path":"solders/keypair/keypair.md","ref":"solders/keypair/keypair.md","articles":[{"title":"从密钥对获取公钥","level":"1.5.2.1","depth":3,"path":"solders/keypair/pubkey.md","ref":"solders/keypair/pubkey.md","articles":[]},{"title":"从字节串生成密钥对 from_bytes","level":"1.5.2.2","depth":3,"path":"solders/keypair/from_bytes.md","ref":"solders/keypair/from_bytes.md","articles":[]},{"title":"从种子生成密钥对 from_seed","level":"1.5.2.3","depth":3,"path":"solders/keypair/from_seed.md","ref":"solders/keypair/from_seed.md","articles":[]},{"title":"通过种子和派生路径生成密钥对 from_seed_and_derivation_path","level":"1.5.2.4","depth":3,"path":"solders/keypair/from_seed_and_derivation_path.md","ref":"solders/keypair/from_seed_and_derivation_path.md","articles":[]},{"title":"通过助记词和密码生成密钥对 from_seed_phrase_and_passphrase","level":"1.5.2.5","depth":3,"path":"solders/keypair/from_seed_phrase_and_passphrase.md","ref":"solders/keypair/from_seed_phrase_and_passphrase.md","articles":[]},{"title":"获取私钥 secret","level":"1.5.2.6","depth":3,"path":"solders/keypair/secret.md","ref":"solders/keypair/secret.md","articles":[]},{"title":"对消息进行签名 sign_message","level":"1.5.2.7","depth":3,"path":"solders/keypair/sign_message.md","ref":"solders/keypair/sign_message.md","articles":[]},{"title":"将密钥对转换为字节串 to_bytes_array","level":"1.5.2.8","depth":3,"path":"solders/keypair/to_bytes_array.md","ref":"solders/keypair/to_bytes_array.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","livereload"],"pluginsConfig":{"toggle-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"solders/keypair/pubkey.md","mtime":"2024-07-08T19:05:17.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-07-08T19:33:31.750Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
