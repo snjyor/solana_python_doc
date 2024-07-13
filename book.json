@@ -1,3 +1,8 @@
 {
-  "plugins": ["toggle-chapters"]
+  "plugins": ["toggle-chapters"],
+  "pluginsConfig": {
+    "ga": {
+        "token": "G-TYB9KGXM4N"
+    }
+  }
 }
